@@ -30,12 +30,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Response includes accurate prompt + completion token counts in `usage` object
   4. `max_tokens` parameter correctly limits response length
   5. `/health` endpoint returns model status and GPU utilization metrics
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: vLLM instance setup with Qwen2.5-Coder-32B (TP=2)
-- [ ] 01-02: OpenAI-compatible `/v1/chat/completions` endpoint with streaming
-- [ ] 01-03: Token counting, max_tokens enforcement, and `/health` endpoint
+- [x] 01-01-PLAN.md — vLLM server setup with Qwen2.5-Coder-32B-Instruct (TP=2), config + startup script + Dockerfile
+- [x] 01-02-PLAN.md — FastAPI health sidecar with GPU utilization metrics on port 8001
+- [x] 01-03-PLAN.md — Smoke tests and verification scripts for all INF requirements
 
 ### Phase 2: API Gateway & Multi-Model
 **Goal**: Clients authenticate with API keys and can route requests to different models with rate limiting and predictable error handling
