@@ -48,13 +48,12 @@ Plans:
   4. Both Qwen2.5-Coder-32B and CodeLlama 70B respond to authenticated requests
   5. All error responses match OpenAI error response schema
   6. Long-running requests timeout gracefully with predictable error response
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: FastAPI gateway with API key authentication (Bearer token)
-- [ ] 02-02: Redis-based rate limiting per API key (token bucket)
-- [ ] 02-03: Multi-model routing (Qwen2.5-Coder-32B + CodeLlama 70B)
-- [ ] 02-04: Request timeout handling and OpenAI-compatible error responses
+- [ ] 02-01-PLAN.md — Foundation: project structure, config, Redis pool, logging
+- [ ] 02-02-PLAN.md — Auth + Rate limiting: HTTPBearer auth, slowapi+Redis rate limiting
+- [ ] 02-03-PLAN.md — Proxy + Routing: vLLM proxy, model registry, SSE streaming, error handling
 
 ### Phase 3: RAG Pipeline
 **Goal**: Completions are enriched with relevant code snippets from the private codebase
