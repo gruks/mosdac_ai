@@ -13,6 +13,7 @@ This roadmap takes the service from zero infrastructure to a fully operational, 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Core Inference** — Serve code completions via vLLM with OpenAI-compatible API
+- [ ] **Phase 1: Core Inference (RTX 1650)** — Serve code completions via Ollama with Qwen2.5-Coder-1.5B (adapted for 4GB VRAM)
 - [ ] **Phase 2: API Gateway & Multi-Model** — FastAPI orchestration with auth, rate limiting, and model routing
 - [ ] **Phase 3: RAG Pipeline** — Code-aware document ingestion, embedding, and context retrieval
 - [ ] **Phase 4: Caching & Optimization** — Redis response caching, prefix caching, and GPU memory tuning
@@ -20,21 +21,21 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 ## Phase Details
 
-### Phase 1: Core Inference
-**Goal**: A developer can send a code completion request to vLLM and receive a streamed response from Qwen2.5-Coder-32B
+### Phase 1: Core Inference (RTX 1650 Adaptation)
+**Goal**: A developer can send a code completion request to Ollama and receive a streamed response from Qwen2.5-Coder-1.5B
 **Depends on**: Nothing (first phase)
-**Requirements**: INF-01, INF-02, INF-03, INF-04, INF-05, INF-06
+**Requirements**: INF-01, INF-02, INF-03, INF-04, INF-05
 **Success Criteria** (what must be TRUE):
   1. Developer can POST to `/v1/chat/completions` and receive code completions
   2. Response streams tokens in real-time when `stream: true` is set
   3. Response includes accurate prompt + completion token counts in `usage` object
   4. `max_tokens` parameter correctly limits response length
-  5. `/health` endpoint returns model status and GPU utilization metrics
+  5. `/health` endpoint returns model status and Ollama availability
 **Plans**: 3 plans
 
 Plans:
-- [x] 01-01-PLAN.md — vLLM server setup with Qwen2.5-Coder-32B-Instruct (TP=2), config + startup script + Dockerfile
-- [x] 01-02-PLAN.md — FastAPI health sidecar with GPU utilization metrics on port 8001
+- [x] 01-01-PLAN.md — Ollama setup with Qwen2.5-Coder-1.5B, Modelfile with 4096 context, config + pull script
+- [x] 01-02-PLAN.md — FastAPI proxy with auth, streaming, health endpoint on port 8000
 - [x] 01-03-PLAN.md — Smoke tests and verification scripts for all INF requirements
 
 ### Phase 2: API Gateway & Multi-Model

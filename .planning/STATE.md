@@ -41,10 +41,10 @@ Progress: [░░░░░░░░░░] 0%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- Start with Qwen2.5-Coder-32B (TP=2) — simplest model to validate inference first
-- vLLM 0.19.0 as inference engine — native OpenAI-compatible API, PagedAttention, continuous batching
+- **RTX 1650 Adaptation** (2026-04-07): Use Ollama + Qwen2.5-Coder-1.5B instead of vLLM + Qwen2.5-Coder-32B due to 4GB VRAM constraint
+- Start with Qwen2.5-Coder-1.5B (Q4 GGUF) — fits in 4GB VRAM
+- Ollama as inference engine — native OpenAI-compatible API, works on consumer GPU
 - FastAPI gateway pattern — thin proxy for auth, routing, RAG, caching
-- GPU partitioning — dedicated GPUs per model, no sharing
 
 ### Pending Todos
 
