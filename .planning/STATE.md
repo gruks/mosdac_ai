@@ -10,27 +10,28 @@ See: .planning/PROJECT.md (updated 2026-04-07)
 ## Current Position
 
 Phase: 2 of 5 (API Gateway & Multi-Model)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-04-08 — Foundation layer created
+Last activity: 2026-04-08 — API key auth and rate limiting implemented
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [██░░░░░░░░] 33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 7 min
-- Total execution time: 7 min
+- Total plans completed: 2
+- Average duration: 8 min
+- Total execution time: 16 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. Core Inference | 0/3 | 0 | N/A |
-| 2. API Gateway | 1/3 | 1 | 7 min |
+| 2. API Gateway | 2/3 | 2 | 8 min |
 
 **Recent Trend:**
+- Plan 02-02 completed in 9 min (API key auth + rate limiting)
 - Plan 02-01 completed in 7 min (foundation layer)
 
 *Updated after each plan completion*
@@ -49,6 +50,9 @@ Recent decisions affecting current work:
 - **pydantic-settings** (2026-04-08): Type-safe configuration with validation and .env support
 - **structlog** (2026-04-08): JSON-formatted structured logging
 - **setuptools** (2026-04-08): Replaced hatchling for editable installs
+- **HTTPBearer auth** (2026-04-08): FastAPI security scheme for case-insensitive Bearer tokens
+- **slowapi + Redis** (2026-04-08): Distributed rate limiting across workers
+- **OpenAI error schema** (2026-04-08): 401/429 responses match OpenAI API format
 
 ### Pending Todos
 
@@ -62,5 +66,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-04-08 (plan execution)
-Stopped at: Completed 02-01-PLAN.md foundation layer
+Stopped at: Completed 02-02-PLAN.md (API key auth + rate limiting)
 Resume file: None
