@@ -1,0 +1,7 @@
+{
+  "a2e4ab0472c808a1ff2ce147ae4f6cd9ecd8bcc8a49c48350f97e6811ace7464": {
+    "name": "test-client",
+    "is_active": true,
+    "rate_limit": "60/minute"
+  }
+}
