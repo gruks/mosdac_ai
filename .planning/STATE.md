@@ -10,27 +10,28 @@ See: .planning/PROJECT.md (updated 2026-04-07)
 ## Current Position
 
 Phase: 2 of 5 (API Gateway & Multi-Model)
-Plan: 2 of 3 in current phase
-Status: In progress
-Last activity: 2026-04-08 — API key auth and rate limiting implemented
+Plan: 3 of 3 in current phase
+Status: Complete
+Last activity: 2026-04-08 — vLLM proxy layer with model routing and SSE streaming implemented
 
-Progress: [██░░░░░░░░] 33%
+Progress: [████░░░░░░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 8 min
-- Total execution time: 16 min
+- Total plans completed: 3
+- Average duration: 18 min
+- Total execution time: 55 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. Core Inference | 0/3 | 0 | N/A |
-| 2. API Gateway | 2/3 | 2 | 8 min |
+| 2. API Gateway | 3/3 | 3 | 18 min |
 
 **Recent Trend:**
+- Plan 02-03 completed in 39 min (vLLM proxy layer with model routing)
 - Plan 02-02 completed in 9 min (API key auth + rate limiting)
 - Plan 02-01 completed in 7 min (foundation layer)
 
@@ -53,6 +54,8 @@ Recent decisions affecting current work:
 - **HTTPBearer auth** (2026-04-08): FastAPI security scheme for case-insensitive Bearer tokens
 - **slowapi + Redis** (2026-04-08): Distributed rate limiting across workers
 - **OpenAI error schema** (2026-04-08): 401/429 responses match OpenAI API format
+- **httpx streaming proxy** (2026-04-08): AsyncClient.stream() for non-blocking SSE forwarding
+- **MODEL_REGISTRY** (2026-04-08): Maps model names to vLLM URLs, validates before routing
 
 ### Pending Todos
 
@@ -66,5 +69,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-04-08 (plan execution)
-Stopped at: Completed 02-02-PLAN.md (API key auth + rate limiting)
+Stopped at: Completed 02-03-PLAN.md (vLLM proxy layer with model routing)
 Resume file: None
