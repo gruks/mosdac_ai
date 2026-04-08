@@ -4,11 +4,16 @@ from typing import Any
 
 from fastapi import Depends, FastAPI, Request
 from fastapi.responses import JSONResponse
+from pydantic import ValidationError
 from slowapi.errors import RateLimitExceeded
 
 from .auth import verify_api_key
 from .config import settings
+from .errors import generic_exception_handler, openai_exception_handler, validation_exception_handler
 from .rate_limiter import limiter
+
+# Import API v1 routers
+from src.api.v1 import chat, completions, models
 
 
 async def _rate_limit_exceeded_handler(request: Request, exc: Any) -> JSONResponse:
@@ -51,6 +56,17 @@ app = FastAPI(
 # Add rate limiter to app
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+# Register exception handlers for OpenAI-compatible errors
+from fastapi import HTTPException
+app.add_exception_handler(HTTPException, openai_exception_handler)
+app.add_exception_handler(ValidationError, validation_exception_handler)
+app.add_exception_handler(Exception, generic_exception_handler)
+
+# Register API v1 routers
+app.include_router(chat.router)
+app.include_router(completions.router)
+app.include_router(models.router)
 
 
 @app.get("/health")
