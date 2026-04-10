@@ -9,12 +9,12 @@ See: .planning/PROJECT.md (updated 2026-04-07)
 
 ## Current Position
 
-Phase: 2 of 5 (API Gateway & Multi-Model)
-Plan: 3 of 3 in current phase
-Status: Complete
-Last activity: 2026-04-08 — vLLM proxy layer with model routing and SSE streaming implemented
+Phase: 3 of 5 (RAG Pipeline)
+Plan: 1 of 2 in current phase
+Status: In progress
+Last activity: 2026-04-10 — RAG module with semantic code chunking implemented
 
-Progress: [████░░░░░░░] 67%
+Progress: [██████░░░░░] 80%
 
 ## Performance Metrics
 
@@ -28,9 +28,11 @@ Progress: [████░░░░░░░] 67%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. Core Inference | 0/3 | 0 | N/A |
-| 2. API Gateway | 3/3 | 3 | 18 min |
+| 2. API Gateway | 3/3 | 55 min | 18 min |
+| 3. RAG Pipeline | 1/2 | 3 min | 3 min |
 
 **Recent Trend:**
+- Plan 03-01 completed in 3 min (RAG module with semantic code chunking)
 - Plan 02-03 completed in 39 min (vLLM proxy layer with model routing)
 - Plan 02-02 completed in 9 min (API key auth + rate limiting)
 - Plan 02-01 completed in 7 min (foundation layer)
@@ -56,6 +58,7 @@ Recent decisions affecting current work:
 - **OpenAI error schema** (2026-04-08): 401/429 responses match OpenAI API format
 - **httpx streaming proxy** (2026-04-08): AsyncClient.stream() for non-blocking SSE forwarding
 - **MODEL_REGISTRY** (2026-04-08): Maps model names to vLLM URLs, validates before routing
+- **astchunk for RAG** (2026-04-10): AST-based semantic code chunking preserving function/class boundaries
 
 ### Pending Todos
 
@@ -68,6 +71,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-08 (plan execution)
-Stopped at: Completed 02-03-PLAN.md (vLLM proxy layer with model routing)
+Last session: 2026-04-10 (plan execution)
+Stopped at: Completed 03-01-PLAN.md (RAG module with semantic code chunking)
 Resume file: None
