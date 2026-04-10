@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-04-07)
 
 **Core value:** Deliver high-quality, context-aware code generation through an OpenAI-compatible API that any existing tool can plug into without modification.
-**Current focus:** Phase 2 — API Gateway & Multi-Model
+**Current focus:** Phase 3 — RAG Pipeline (Complete)
 
 ## Current Position
 
 Phase: 3 of 5 (RAG Pipeline)
-Plan: 2 of 2 in current phase
-Status: In progress
-Last activity: 2026-04-10 — FAISS vector index with embedding caching implemented
+Plan: 3 of 3 in current phase
+Status: Complete
+Last activity: 2026-04-10 — RAG pipeline integrated with completions API
 
-Progress: [██████░░░░░] 80%
+Progress: [████████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 15 min
-- Total execution time: 60 min
+- Total plans completed: 5
+- Average duration: 14 min
+- Total execution time: 67 min
 
 **By Phase:**
 
@@ -29,9 +29,10 @@ Progress: [██████░░░░░] 80%
 |-------|-------|-------|----------|
 | 1. Core Inference | 0/3 | 0 | N/A |
 | 2. API Gateway | 3/3 | 55 min | 18 min |
-| 3. RAG Pipeline | 2/2 | 8 min | 4 min |
+| 3. RAG Pipeline | 3/3 | 12 min | 4 min |
 
 **Recent Trend:**
+- Plan 03-03 completed in 4 min (RAG pipeline with prompt injection defense)
 - Plan 03-02 completed in 5 min (FAISS vector index with embedding caching)
 - Plan 03-01 completed in 3 min (RAG module with semantic code chunking)
 - Plan 02-03 completed in 39 min (vLLM proxy layer with model routing)
@@ -60,6 +61,7 @@ Recent decisions affecting current work:
 - **httpx streaming proxy** (2026-04-08): AsyncClient.stream() for non-blocking SSE forwarding
 - **MODEL_REGISTRY** (2026-04-08): Maps model names to vLLM URLs, validates before routing
 - **astchunk for RAG** (2026-04-10): AST-based semantic code chunking preserving function/class boundaries
+- **RAG pipeline injection defense** (2026-04-10): XML <context> delimiters + IGNORE directive for prompt injection defense
 
 ### Pending Todos
 
@@ -73,5 +75,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-04-10 (plan execution)
-Stopped at: Completed 03-02-PLAN.md (FAISS vector index with embedding caching)
+Stopped at: Completed 03-03-PLAN.md (RAG pipeline integrated with completions API)
 Resume file: None
