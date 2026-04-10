@@ -69,9 +69,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Code-aware document ingestion (function/class boundary splitting)
-- [ ] 03-02-PLAN.md — FAISS vector index setup with embedding caching
-- [ ] 03-03-PLAN.md — Context retrieval and prompt injection pipeline
+- [x] 03-01-PLAN.md — Semantic code chunking at function/class boundaries
+- [x] 03-02-PLAN.md — FAISS vector index with embedding caching
+- [x] 03-03-PLAN.md — RAG pipeline integration with completions API
 
 ### Phase 4: Caching & Optimization
 **Goal**: Repeated and similar requests return faster through caching at multiple levels
@@ -112,7 +112,7 @@ Note: Phase 5 (Evaluation) depends only on Phase 1 (a running model), so it can 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Core Inference | 0/3 | Not started | - |
-| 2. API Gateway & Multi-Model | 0/4 | Not started | - |
-| 3. RAG Pipeline | 0/3 | Not started | - |
+| 2. API Gateway & Multi-Model | 3/3 | Complete | 2026-04-08 |
+| 3. RAG Pipeline | 3/3 | Planned | - |
 | 4. Caching & Optimization | 0/2 | Not started | - |
 | 5. Evaluation | 0/3 | Not started | - |
