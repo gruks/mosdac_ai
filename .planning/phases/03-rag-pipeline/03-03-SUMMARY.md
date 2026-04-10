@@ -94,3 +94,10 @@ None - no external service configuration required.
 ---
 *Phase: 03-rag-pipeline*
 *Completed: 2026-04-10*
+
+## Self-Check: PASSED
+
+- src/rag/pipeline.py exists
+- src/api/v1/chat.py exists
+- commit 971736a present
+- RAGPipeline verification passed (`<context>` and `IGNORE` in prompt)
