@@ -66,12 +66,12 @@ Plans:
   2. FAISS vector index stores and retrieves code embeddings
   3. Completions include relevant code snippets from the codebase injected into the prompt
   4. Embeddings are cached and not recomputed on repeated ingestion of the same code
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 03-01: Code-aware document ingestion (function/class boundary splitting)
-- [ ] 03-02: FAISS vector index setup with embedding caching
-- [ ] 03-03: Context retrieval and prompt injection pipeline
+- [ ] 03-01-PLAN.md — Code-aware document ingestion (function/class boundary splitting)
+- [ ] 03-02-PLAN.md — FAISS vector index setup with embedding caching
+- [ ] 03-03-PLAN.md — Context retrieval and prompt injection pipeline
 
 ### Phase 4: Caching & Optimization
 **Goal**: Repeated and similar requests return faster through caching at multiple levels
