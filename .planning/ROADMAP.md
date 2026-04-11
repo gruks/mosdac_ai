@@ -29,7 +29,7 @@ User Query → LLM Intent → Vector DB → Graph DB → Combine → LLM Answer
 
 | Phase | Status | Plans |
 |-------|--------|-------|
-| 1. Web Scraper | - | - |
+| 1. Web Scraper | gap_closure | 2 plans (01-01 complete, 01-02 gap closure) |
 | 2. NLP Extraction | - | - |
 | 3. Neo4j Schema | - | - |
 | 4. Data Loader | - | - |
