@@ -1,117 +1,57 @@
-# Requirements: Code Generation API Service
+# Requirements: MOSDAC GraphRAG
 
-**Defined:** 2026-04-07
-**Core Value:** Deliver high-quality, context-aware code generation through an OpenAI-compatible API that any existing tool can plug into without modification.
+**Defined:** 2026-04-11
+**Core Value:** Weather data Q&A using Knowledge Graph + Fine-tuned LLM
 
-## v1 Requirements
+## Phase 1: Web Scraper
 
-### Core Inference
+- [ ] **SCRAPE-01**: Scrape satellite data from mosdac.gov.in
+- [ ] **SCRAPE-02**: Scrape sensor specifications
+- [ ] **SCRAPE-03**: Scrape data product descriptions
+- [ ] **SCRAPE-04**: Scrape FAQs
+- [ ] **SCRAPE-05**: Handle dynamic content (JavaScript-rendered pages)
 
-- [ ] **INF-01**: Service serves code completions via vLLM with OpenAI-compatible `/v1/chat/completions` endpoint
-- [ ] **INF-02**: Streaming responses via SSE with `stream: true` parameter
-- [ ] **INF-03**: Token counting (prompt + completion) returned in response `usage` object
-- [ ] **INF-04**: Max token limits enforced via `max_tokens` parameter
-- [ ] **INF-05**: Health check endpoint `/health` returning model status and GPU utilization
-- [ ] **INF-06**: Qwen2.5-Coder-32B model served with tensor parallelism (TP=2)
+## Phase 2: NLP Entity Extraction
 
-### API Gateway
+- [ ] **NLP-01**: Extract satellite entities (INSAT-3D, etc.)
+- [ ] **NLP-02**: Extract sensor entities
+- [ ] **NLP-03**: Extract product entities
+- [ ] **NLP-04**: Extract relationships (PROVIDES, USES, etc.)
+- [ ] **NLP-05**: Entity normalization (INSAT 3D → INSAT-3D)
 
-- [ ] **API-01**: API key authentication via Bearer token
-- [ ] **API-02**: Rate limiting per API key using Redis token bucket
-- [ ] **API-03**: Request timeout handling with predictable client behavior
-- [ ] **API-04**: Error responses in OpenAI-compatible format
-- [ ] **API-05**: Model selection via `model` parameter in request body
-- [ ] **API-06**: Multi-model routing (Qwen2.5-Coder-32B and CodeLlama 70B)
+## Phase 3: Neo4j Schema
 
-### RAG Pipeline
+- [ ] **SCHEMA-01**: Define Node types (Satellite, Sensor, Product, Document, FAQ)
+- [ ] **SCHEMA-02**: Define Relationship types
+- [ ] **SCHEMA-03**: Create constraints for unique nodes
+- [ ] **SCHEMA-04**: Create indexes for query performance
 
-- [ ] **RAG-01**: Code-aware document ingestion splitting at function/class boundaries
-- [ ] **RAG-02**: FAISS vector index for codebase context retrieval
-- [ ] **RAG-03**: Relevant code snippets injected into prompts for context-aware generation
-- [ ] **RAG-04**: Embedding caching to avoid recomputation
+## Phase 4: Data Loader
 
-### Caching & Optimization
+- [ ] **LOAD-01**: Bulk import scraped data to Neo4j
+- [ ] **LOAD-02**: Incremental updates for new data
+- [ ] **LOAD-03**: Link documents to entities
+- [ ] **LOAD-04**: Cache embeddings in FAISS
 
-- [ ] **CACHE-01**: Exact-match response caching via Redis
-- [ ] **CACHE-02**: Prefix caching enabled in vLLM for shared system prompt reuse
-- [ ] **CACHE-03**: KV cache tuning with `--gpu-memory-utilization 0.85-0.90`
+## Phase 5: Fine-tuned Model
 
-### Evaluation
+- [ ] **FINE-01**: Prepare training data from knowledge graph
+- [ ] **FINE-02**: Fine-tune model for weather queries
+- [ ] **FINE-03**: Evaluate model quality
 
-- [ ] **EVAL-01**: HumanEval benchmark pipeline for code generation quality
-- [ ] **EVAL-02**: MBPP benchmark pipeline for code generation quality
-- [ ] **EVAL-03**: pass@k metric tracking after every model/adapter change
+## Phase 6: GraphRAG Pipeline
 
-## v2 Requirements
+- [ ] **GRAGRAG-01**: Vector search for documents
+- [ ] **GRAGRAG-02**: Graph traversal for relationships
+- [ ] **GRAGRAG-03**: Combine contexts
+- [ ] **GRAGRAG-04**: Prompt injection defense
 
-### Fine-Tuning Infrastructure
+## Phase 7: Q&A Interface
 
-- **FT-01**: QLoRA fine-tuning pipeline via PEFT + bitsandbytes
-- **FT-02**: LoRA adapter deployment to vLLM
-- **FT-03**: LoRA adapter hot-swapping without model restart
-- **FT-04**: Model quality evaluation after fine-tuning
-
-### Advanced Features
-
-- **ADV-01**: Semantic response caching via embedding similarity
-- **ADV-02**: Structured output (JSON schema) for specific code formats
-- **ADV-03**: Conversation/session management for multi-turn interactions
-- **ADV-04**: Code-specific system prompt templates
-- **ADV-05**: Batch API endpoint for offline processing
-- **ADV-06**: Usage analytics dashboard (Prometheus + Grafana)
-
-### Production Hardening
-
-- **PROD-01**: Prometheus metrics export
-- **PROD-02**: Grafana dashboards for GPU utilization, latency, error rates
-- **PROD-03**: Alerting on KV cache utilization thresholds
-- **PROD-04**: Load testing and scaling documentation
-- **PROD-05**: Disaster recovery procedures
-
-## Out of Scope
-
-| Feature | Reason |
-|---------|--------|
-| Custom API protocol | Every tool expects OpenAI format; would eliminate drop-in compatibility |
-| Training/fine-tuning in API service | Training and inference have different resource profiles; causes OOM and operational issues |
-| Building custom vector database | FAISS is battle-tested, in-process, GPU-accelerated, zero external dependencies |
-| Real-time code execution/sandbox | Security nightmare; separate product with different risk profile |
-| GUI/web interface | API-only service; UI would be separate frontend consuming the API |
-| LangChain as core integration | Adds latency and debugging complexity; LlamaIndex is cleaner for code-gen RAG |
-| Model training from scratch | Foundation model training costs millions; fine-tuning is sufficient |
-
-## Traceability
-
-| Requirement | Phase | Status |
-|-------------|-------|--------|
-| INF-01 | Phase 1 | Pending |
-| INF-02 | Phase 1 | Pending |
-| INF-03 | Phase 1 | Pending |
-| INF-04 | Phase 1 | Pending |
-| INF-05 | Phase 1 | Pending |
-| INF-06 | Phase 1 | Pending |
-| API-01 | Phase 2 | Pending |
-| API-02 | Phase 2 | Pending |
-| API-03 | Phase 2 | Pending |
-| API-04 | Phase 2 | Pending |
-| API-05 | Phase 2 | Pending |
-| API-06 | Phase 2 | Pending |
-| RAG-01 | Phase 3 | Pending |
-| RAG-02 | Phase 3 | Pending |
-| RAG-03 | Phase 3 | Pending |
-| RAG-04 | Phase 3 | Pending |
-| CACHE-01 | Phase 4 | Pending |
-| CACHE-02 | Phase 4 | Pending |
-| CACHE-03 | Phase 4 | Pending |
-| EVAL-01 | Phase 5 | Pending |
-| EVAL-02 | Phase 5 | Pending |
-| EVAL-03 | Phase 5 | Pending |
-
-**Coverage:**
-- v1 requirements: 22 total
-- Mapped to phases: 22
-- Unmapped: 0 ✓
+- [ ] **QA-01**: REST API endpoint for queries
+- [ ] **QA-02**: Stream responses
+- [ ] **QA-03**: Show sources/references
+- [ ] **QA-04**: Rate limiting
 
 ---
-*Requirements defined: 2026-04-07*
-*Last updated: 2026-04-07 after research synthesis*
+*Requirements defined: 2026-04-11*
