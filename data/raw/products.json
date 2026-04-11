@@ -1,9 +1,56 @@
 [
-  [
-    {
-      "name": "Temperature Data",
-      "category": "Atmospheric",
-      "scraped_at": "2026-04-11T09:30:00Z"
-    }
-  ]
+  {
+    "name": "3D Volumetric TERLS DWRproduct",
+    "category": "Weather Data",
+    "url": "https://www.mosdac.gov.in/3d-volumetric-terls-dwrproduct",
+    "scraped_at": "2026-04-11T09:36:32.668077"
+  },
+  {
+    "name": "Indian Mainland Coastal Product",
+    "category": "Weather Data",
+    "url": "https://www.mosdac.gov.in/indian-mainland-coastal-product",
+    "scraped_at": "2026-04-11T09:36:32.668096"
+  },
+  {
+    "name": "Cal-Val",
+    "category": "Weather Data",
+    "url": "https://www.mosdac.gov.in/internal/calval-data",
+    "scraped_at": "2026-04-11T09:36:32.668105"
+  },
+  {
+    "name": "Data Quality",
+    "category": "Weather Data",
+    "url": "https://www.mosdac.gov.in/data-quality",
+    "scraped_at": "2026-04-11T09:36:32.668115"
+  },
+  {
+    "name": "3D Volumetric TERLS DWRproduct",
+    "category": "Weather Data",
+    "url": "https://www.mosdac.gov.in/3d-volumetric-terls-dwrproduct",
+    "scraped_at": "2026-04-11T09:36:32.668143"
+  },
+  {
+    "name": "Indian Mainland Coastal Product",
+    "category": "Weather Data",
+    "url": "https://www.mosdac.gov.in/indian-mainland-coastal-product",
+    "scraped_at": "2026-04-11T09:36:32.668152"
+  },
+  {
+    "name": "Cal-Val",
+    "category": "Weather Data",
+    "url": "https://www.mosdac.gov.in/internal/calval-data",
+    "scraped_at": "2026-04-11T09:36:32.668158"
+  },
+  {
+    "name": "Data Quality",
+    "category": "Weather Data",
+    "url": "https://www.mosdac.gov.in/data-quality",
+    "scraped_at": "2026-04-11T09:36:32.668167"
+  },
+  {
+    "name": "Data Access Policy",
+    "category": "Weather Data",
+    "url": "https://www.mosdac.gov.in/data-access-policy",
+    "scraped_at": "2026-04-11T09:36:32.668180"
+  }
 ]

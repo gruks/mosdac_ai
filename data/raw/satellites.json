@@ -1,9 +1,62 @@
 [
-  [
-    {
-      "name": "INSAT-3D",
-      "source": "MOSDAC",
-      "scraped_at": "2026-04-11T09:30:00Z"
-    }
-  ]
+  {
+    "name": "INSAT-3DR",
+    "url": "https://www.mosdac.gov.in/insat-3dr",
+    "source": "MOSDAC",
+    "scraped_at": "2026-04-11T09:36:29.030451"
+  },
+  {
+    "name": "INSAT-3D",
+    "url": "https://www.mosdac.gov.in/insat-3d",
+    "source": "MOSDAC",
+    "scraped_at": "2026-04-11T09:36:29.030469"
+  },
+  {
+    "name": "INSAT-3A",
+    "url": "https://www.mosdac.gov.in/insat-3a",
+    "source": "MOSDAC",
+    "scraped_at": "2026-04-11T09:36:29.030475"
+  },
+  {
+    "name": "INSAT-3DS",
+    "url": "https://www.mosdac.gov.in/insat-3ds",
+    "source": "MOSDAC",
+    "scraped_at": "2026-04-11T09:36:29.030480"
+  },
+  {
+    "name": "Satellite",
+    "url": "https://www.mosdac.gov.in/internal/catalog-satellite",
+    "source": "MOSDAC",
+    "scraped_at": "2026-04-11T09:36:29.030485"
+  },
+  {
+    "name": "INSAT-3DR",
+    "url": "https://www.mosdac.gov.in/insat-3dr",
+    "source": "MOSDAC",
+    "scraped_at": "2026-04-11T09:36:29.030502"
+  },
+  {
+    "name": "INSAT-3D",
+    "url": "https://www.mosdac.gov.in/insat-3d",
+    "source": "MOSDAC",
+    "scraped_at": "2026-04-11T09:36:29.030505"
+  },
+  {
+    "name": "INSAT-3A",
+    "url": "https://www.mosdac.gov.in/insat-3a",
+    "source": "MOSDAC",
+    "scraped_at": "2026-04-11T09:36:29.030512"
+  },
+  {
+    "name": "INSAT-3DS",
+    "url": "https://www.mosdac.gov.in/insat-3ds",
+    "source": "MOSDAC",
+    "scraped_at": "2026-04-11T09:36:29.030517"
+  },
+  {
+    "name": "Satellite",
+    "url": "https://www.mosdac.gov.in/internal/catalog-satellite",
+    "source": "MOSDAC",
+    "scraped_at": "2026-04-11T09:36:29.030521"
+  }
 ]
