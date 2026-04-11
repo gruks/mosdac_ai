@@ -3,7 +3,7 @@
 ## Current Position
 
 Phase: 2 of 7 (NLP Extraction)
-Plan: 1 of 1 in current phase
+Plan: 2 of 3 in current phase
 Status: Completed
 
 ## Progress
@@ -11,7 +11,7 @@ Status: Completed
 | Phase | Status | Plans |
 |-------|--------|-------|
 | 1. Web Scraper | Complete | 2/2 |
-| 2. NLP Extraction | Complete | 1/1 |
+| 2. NLP Extraction | In Progress | 2/3 |
 | 3. Neo4j Schema | Pending | - |
 | 4. Data Loader | Pending | - |
 | 5. Fine-tune Model | Pending | - |
@@ -28,8 +28,11 @@ Status: Completed
 - Removed hardcoded fallback data from scraper (empty list returns)
 - Enabled Selenium for all dynamic content scraping
 - Used GLiNER zero-shot NER for domain-specific entity extraction
+- Used spaCy dependency parsing for relationship extraction
+- Used rapidfuzz for fuzzy entity matching (85% threshold)
+- Made NLP module defensive to handle missing GLiNER
 
 ---
 
 *Updated: 2026-04-11*
-*Last session: Completed 02-nlp-extraction plan 01*
+*Last session: Completed 02-nlp-extraction-02 plan*
