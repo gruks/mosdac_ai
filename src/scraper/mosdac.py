@@ -134,7 +134,7 @@ class MOSDACScraper:
         """
         satellites = []
 
-        # Try common MOSDAC satellite page paths
+        # Try common MOSDAC satellite page paths - first with Selenium for dynamic content
         urls_to_try = [
             f"{self.base_url}/satellite",
             f"{self.base_url}/satellites",
@@ -143,15 +143,17 @@ class MOSDACScraper:
         ]
 
         for url in urls_to_try:
-            html = self._get(url)
+            # Try with Selenium first for dynamic content
+            html = self._get(url, use_selenium=True)
             if html:
                 soup = BeautifulSoup(html, "html.parser")
 
                 # Look for satellite information
-                # This is a placeholder - actual selectors depend on website structure
                 for link in soup.find_all("a", href=True):
                     href = link.get("href", "")
-                    if "satellite" in href.lower() or "insat" in href.lower():
+                    if href and (
+                        "satellite" in href.lower() or "insat" in href.lower()
+                    ):
                         text = link.get_text(strip=True)
                         if text:
                             satellites.append(
@@ -168,17 +170,7 @@ class MOSDACScraper:
                 if satellites:
                     break
 
-        # If no satellites found, add example data structure
-        if not satellites:
-            satellites.append(
-                {
-                    "name": "INSAT-3D",
-                    "description": "Indian Meteorological Satellite",
-                    "source": "MOSDAC",
-                    "scraped_at": datetime.utcnow().isoformat(),
-                }
-            )
-
+        # Return empty list if no data found - no hardcoded fallbacks
         return satellites
 
     def scrape_sensors(self) -> List[Dict[str, Any]]:
@@ -190,7 +182,7 @@ class MOSDACScraper:
         """
         sensors = []
 
-        # Scrape sensors from the website
+        # Scrape sensors from the website - use Selenium for dynamic content
         urls_to_try = [
             f"{self.base_url}/sensors",
             f"{self.base_url}/instrument",
@@ -198,13 +190,13 @@ class MOSDACScraper:
         ]
 
         for url in urls_to_try:
-            html = self._get(url)
+            html = self._get(url, use_selenium=True)
             if html:
                 soup = BeautifulSoup(html, "html.parser")
 
                 for link in soup.find_all("a", href=True):
                     href = link.get("href", "")
-                    if "sensor" in href.lower() or "ims" in href.lower():
+                    if href and ("sensor" in href.lower() or "ims" in href.lower()):
                         text = link.get_text(strip=True)
                         if text:
                             sensors.append(
@@ -221,17 +213,7 @@ class MOSDACScraper:
                 if sensors:
                     break
 
-        # Default sensor data
-        if not sensors:
-            sensors.append(
-                {
-                    "name": "Imaging Sensor",
-                    "type": "Optical Radiometer",
-                    "source": "MOSDAC",
-                    "scraped_at": datetime.utcnow().isoformat(),
-                }
-            )
-
+        # Return empty list if no data found - no hardcoded fallbacks
         return sensors
 
     def scrape_products(self) -> List[Dict[str, Any]]:
@@ -243,7 +225,7 @@ class MOSDACScraper:
         """
         products = []
 
-        # Common product page paths
+        # Common product page paths - use Selenium for dynamic content
         urls_to_try = [
             f"{self.base_url}/products",
             f"{self.base_url}/dataproducts",
@@ -252,14 +234,14 @@ class MOSDACScraper:
         ]
 
         for url in urls_to_try:
-            html = self._get(url)
+            html = self._get(url, use_selenium=True)
             if html:
                 soup = BeautifulSoup(html, "html.parser")
 
                 # Look for product information
                 for link in soup.find_all("a", href=True):
                     href = link.get("href", "")
-                    if any(
+                    if href and any(
                         keyword in href.lower()
                         for keyword in ["product", "data", "imagery"]
                     ):
@@ -279,23 +261,7 @@ class MOSDACScraper:
                 if products:
                     break
 
-        # Default products if none found
-        if not products:
-            products = [
-                {
-                    "name": "Temperature Data",
-                    "category": "Atmospheric",
-                    "applications": ["Weather Forecasting", "Climate Monitoring"],
-                    "scraped_at": datetime.utcnow().isoformat(),
-                },
-                {
-                    "name": "Satellite Imagery",
-                    "category": "Optical",
-                    "applications": ["Weather Analysis", "Disaster Monitoring"],
-                    "scraped_at": datetime.utcnow().isoformat(),
-                },
-            ]
-
+        # Return empty list if no data found - no hardcoded fallbacks
         return products
 
     def scrape_faqs(self) -> List[Dict[str, Any]]:
@@ -315,7 +281,8 @@ class MOSDACScraper:
         ]
 
         for url in urls_to_try:
-            html = self._get(url)
+            # Use Selenium for dynamic FAQ content (expandable sections)
+            html = self._get(url, use_selenium=True)
             if html:
                 soup = BeautifulSoup(html, "html.parser")
 
@@ -356,16 +323,7 @@ class MOSDACScraper:
                 if faqs:
                     break
 
-        # Default FAQ structure
-        if not faqs:
-            faqs.append(
-                {
-                    "question": "How to access MOSDAC data?",
-                    "answer": "Visit the MOSDAC data portal to download weather satellite data.",
-                    "scraped_at": datetime.utcnow().isoformat(),
-                }
-            )
-
+        # Return empty list if no data found - no hardcoded fallbacks
         return faqs
 
     def scrape_documents(self) -> List[Dict[str, Any]]:
@@ -385,13 +343,16 @@ class MOSDACScraper:
         ]
 
         for url in urls_to_try:
-            html = self._get(url)
+            # Use Selenium for dynamic document listings
+            html = self._get(url, use_selenium=True)
             if html:
                 soup = BeautifulSoup(html, "html.parser")
 
                 for link in soup.find_all("a", href=True):
                     href = link.get("href", "")
-                    if any(ext in href.lower() for ext in [".pdf", ".doc", ".docx"]):
+                    if href and any(
+                        ext in href.lower() for ext in [".pdf", ".doc", ".docx"]
+                    ):
                         text = link.get_text(strip=True)
                         if text:
                             documents.append(
@@ -408,17 +369,7 @@ class MOSDACScraper:
                 if documents:
                     break
 
-        # Default documents
-        if not documents:
-            documents.append(
-                {
-                    "title": "MOSDAC User Guide",
-                    "type": "Manual",
-                    "description": "User guide for MOSDAC data access",
-                    "scraped_at": datetime.utcnow().isoformat(),
-                }
-            )
-
+        # Return empty list if no data found - no hardcoded fallbacks
         return documents
 
     def _save_json(self, data: Any, filename: str) -> Path:
@@ -426,13 +377,26 @@ class MOSDACScraper:
         Save data as JSON file.
 
         Args:
-            data: Data to save
+            data: Data to save (expected: List[Dict])
             filename: Output filename
 
         Returns:
             Path to saved file
         """
         output_path = self.output_dir / filename
+
+        # Ensure we're outputting single-nested array [{...}] not [[{...}]]
+        # If data is a list containing lists, flatten it
+        if isinstance(data, list) and data and isinstance(data[0], list):
+            # Flatten the nested structure
+            flat_data = []
+            for item in data:
+                if isinstance(item, list):
+                    flat_data.extend(item)
+                else:
+                    flat_data.append(item)
+            data = flat_data
+
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
         logger.info(
