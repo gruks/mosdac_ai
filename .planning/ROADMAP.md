@@ -19,6 +19,11 @@ User Query → LLM Intent → Vector DB → Graph DB → Combine → LLM Answer
 
 - [ ] **Phase 1: Web Scraper** — Scrape data from mosdac.gov.in
 - [ ] **Phase 2: NLP Entity Extraction** — Extract entities/relationships from text
+
+  Plans:
+  - [ ] 02-01-PLAN.md — NLP module setup + GLiNER entity extraction
+  - [ ] 02-02-PLAN.md — Relationship extraction + entity normalization
+  - [ ] 02-03-PLAN.md — Unified pipeline + process scraped data
 - [ ] **Phase 3: Neo4j Schema** — Define graph schema and constraints
 - [ ] **Phase 4: Data Loader** — Load scraped data into Neo4j
 - [ ] **Phase 5: Fine-tuned Model** — Fine-tune LLM for weather data
@@ -30,7 +35,7 @@ User Query → LLM Intent → Vector DB → Graph DB → Combine → LLM Answer
 | Phase | Status | Plans |
 |-------|--------|-------|
 | 1. Web Scraper | gap_closure | 2 plans (01-01 complete, 01-02 gap closure) |
-| 2. NLP Extraction | - | - |
+| 2. NLP Extraction | in_progress | 3 plans (02-01 to 02-03) |
 | 3. Neo4j Schema | - | - |
 | 4. Data Loader | - | - |
 | 5. Fine-tune Model | - | - |
