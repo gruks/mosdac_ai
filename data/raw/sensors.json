@@ -1,0 +1,10 @@
+[
+  [
+    {
+      "name": "Imaging Sensor",
+      "type": "Optical Radiometer",
+      "source": "MOSDAC",
+      "scraped_at": "2026-04-11T09:30:00Z"
+    }
+  ]
+]
