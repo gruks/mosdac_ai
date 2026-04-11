@@ -115,5 +115,5 @@ Note: Phase 5 (Evaluation) depends only on Phase 1 (a running model), so it can 
 | 1. Core Inference | 0/3 | Not started | - |
 | 2. API Gateway & Multi-Model | 3/3 | Complete | 2026-04-08 |
 | 3. RAG Pipeline | 3/3 | Complete | 2026-04-10 |
-| 4. Caching & Optimization | 0/2 | Not started | - |
+| 4. Caching & Optimization | 2/2 | Planned | - |
 | 5. Evaluation | 0/3 | Not started | - |
