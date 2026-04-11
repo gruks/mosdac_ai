@@ -82,11 +82,11 @@ Plans:
   1. Identical requests return cached responses from Redis without hitting the model
   2. Requests with shared system prompts benefit from vLLM prefix caching (faster subsequent requests)
   3. GPU memory utilization stays within 85-90% under sustained load
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: Redis exact-match response caching
-- [ ] 04-02: vLLM prefix caching and KV cache tuning
+- [x] 04-01-PLAN.md — Redis exact-match response caching
+- [x] 04-02-PLAN.md — Ollama keep_alive + GPU memory tuning
 
 ### Phase 5: Evaluation
 **Goal**: Model quality is measured and tracked with standardized benchmarks after every change
