@@ -2,9 +2,9 @@
 
 ## Current Position
 
-Phase: 3 of 7 (Neo4j Schema)
-Plan: 2 of 2 in current phase
-Status: Completed
+Phase: 4 of 7 (Data Loader)
+Plan: 1 of 1 in current phase
+Status: Planned
 
 ## Progress
 
@@ -13,7 +13,7 @@ Status: Completed
 | 1. Web Scraper | Complete | 2/2 |
 | 2. NLP Extraction | Complete | 3/3 |
 | 3. Neo4j Schema | Complete | 2/2 |
-| 4. Data Loader | Pending | - |
+| 4. Data Loader | Planned | 1 plan |
 | 5. Fine-tune Model | Pending | - |
 | 6. GraphRAG | Pending | - |
 | 7. Q&A Interface | Pending | - |

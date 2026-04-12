@@ -30,6 +30,9 @@ User Query → LLM Intent → Vector DB → Graph DB → Combine → LLM Answer
   - [ ] 03-01-PLAN.md — Neo4j client + node/relationship types
   - [ ] 03-02-PLAN.md — Constraints + indexes
 - [ ] **Phase 4: Data Loader** — Load scraped data into Neo4j
+
+  Plans:
+  - [ ] 04-01-PLAN.md — Data loader module creation
 - [ ] **Phase 5: Fine-tuned Model** — Fine-tune LLM for weather data
 - [ ] **Phase 6: GraphRAG Pipeline** — Combine vector + graph retrieval
 - [ ] **Phase 7: Q&A Interface** — User interface for queries
