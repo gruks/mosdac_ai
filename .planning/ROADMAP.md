@@ -29,10 +29,10 @@ User Query → LLM Intent → Vector DB → Graph DB → Combine → LLM Answer
   Plans:
   - [ ] 03-01-PLAN.md — Neo4j client + node/relationship types
   - [ ] 03-02-PLAN.md — Constraints + indexes
-- [ ] **Phase 4: Data Loader** — Load scraped data into Neo4j
+- [x] **Phase 4: Data Loader** — Load scraped data into Neo4j (Complete)
 
   Plans:
-  - [ ] 04-01-PLAN.md — Data loader module creation
+  - [x] 04-01-PLAN.md — Data loader module creation ✓
 - [ ] **Phase 5: Fine-tuned Model** — Fine-tune LLM for weather data
 - [ ] **Phase 6: GraphRAG Pipeline** — Combine vector + graph retrieval
 - [ ] **Phase 7: Q&A Interface** — User interface for queries
@@ -41,10 +41,10 @@ User Query → LLM Intent → Vector DB → Graph DB → Combine → LLM Answer
 
 | Phase | Status | Plans |
 |-------|--------|-------|
-| 1. Web Scraper | gap_closure | 2 plans (01-01 complete, 01-02 gap closure) |
-| 2. NLP Extraction | in_progress | 3 plans (02-01 to 02-03) |
-| 3. Neo4j Schema | planned | 2 plans (03-01 to 03-02) |
-| 4. Data Loader | - | - |
-| 5. Fine-tune Model | - | - |
-| 6. GraphRAG | - | - |
-| 7. Q&A Interface | - | - |
+| 1. Web Scraper | Complete | 2/2 |
+| 2. NLP Extraction | Complete | 3/3 |
+| 3. Neo4j Schema | Complete | 2/2 |
+| 4. Data Loader | Complete | 1/1 ✓ |
+| 5. Fine-tune Model | Pending | - |
+| 6. GraphRAG | Pending | - |
+| 7. Q&A Interface | Pending | - |
