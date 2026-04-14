@@ -33,7 +33,7 @@ User Query → LLM Intent → Vector DB → Graph DB → Combine → LLM Answer
 
   Plans:
   - [x] 04-01-PLAN.md — Data loader module creation ✓
-- [ ] **Phase 5: Fine-tuned Model** — Fine-tune LLM for weather data
+- [ ] **Phase 5: LLM Client** — REST client for fine-tuned model API
 - [ ] **Phase 6: GraphRAG Pipeline** — Combine vector + graph retrieval
 - [ ] **Phase 7: Q&A Interface** — User interface for queries
 
@@ -45,6 +45,6 @@ User Query → LLM Intent → Vector DB → Graph DB → Combine → LLM Answer
 | 2. NLP Extraction | Complete | 3/3 |
 | 3. Neo4j Schema | Complete | 2/2 |
 | 4. Data Loader | Complete | 1/1 ✓ |
-| 5. Fine-tune Model | Pending | - |
+| 5. LLM Client | Planned | 1 plan |
 | 6. GraphRAG | Pending | - |
 | 7. Q&A Interface | Pending | - |
