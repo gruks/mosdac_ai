@@ -35,6 +35,11 @@ User Query → LLM Intent → Vector DB → Graph DB → Combine → LLM Answer
   - [x] 04-01-PLAN.md — Data loader module creation ✓
 - [ ] **Phase 5: LLM Client** — REST client for fine-tuned model API (Complete)
 - [ ] **Phase 6: GraphRAG Pipeline** — Combine vector + graph retrieval
+
+  Plans:
+  - [ ] 06-01-PLAN.md — Vector and graph retriever modules
+  - [ ] 06-02-PLAN.md — Context combiner + guardrails + config
+  - [ ] 06-03-PLAN.md — Main pipeline orchestrator
 - [ ] **Phase 7: Q&A Interface** — User interface for queries
 
 ## Progress
@@ -46,5 +51,5 @@ User Query → LLM Intent → Vector DB → Graph DB → Combine → LLM Answer
 | 3. Neo4j Schema | Complete | 2/2 |
 | 4. Data Loader | Complete | 1/1 |
 | 5. LLM Client | Complete | 1/1 ✓ |
-| 6. GraphRAG | Pending | - |
+| 6. GraphRAG | Pending | 3 plans |
 | 7. Q&A Interface | Pending | - |
