@@ -7,27 +7,53 @@ from typing import TYPE_CHECKING
 # NLP module initialization
 __version__ = "0.1.0"
 
-# Import main components - handle both package and standalone import scenarios
-try:
-    from src.nlp.config import ENTITY_LABELS, RELATION_TYPES, GLiNER_MODEL, SPACY_MODEL
-except ImportError:
-    try:
-        from nlp.config import ENTITY_LABELS, RELATION_TYPES, GLiNER_MODEL, SPACY_MODEL
-    except ImportError:
-        ENTITY_LABELS = ["SATELLITE", "SENSOR", "PRODUCT"]
-        RELATION_TYPES = ["PROVIDES", "USES", "LOCATED_AT", "MEASURES"]
-        GLiNER_MODEL = "urchade/gliner_medium-v2.1"
-        SPACY_MODEL = "en_core_web_sm"
+# Import config directly - avoid triggering package imports
+config_code = """
+import os
 
-# EntityExtractor may not be available without GLiNER
-EntityExtractor = None
+ENTITY_LABELS = ["SATELLITE", "SENSOR", "PRODUCT"]
+RELATION_TYPES = ["PROVIDES", "USES", "LOCATED_AT", "MEASURES"]
+GLiNER_MODEL = os.getenv("GLINER_MODEL", "urchade/gliner_medium-v2.1")
+SPACY_MODEL = os.getenv("SPACY_MODEL", "en_core_web_sm")
+"""
+
+# Execute config code in a separate namespace
+_config_ns = {}
 try:
-    from src.nlp.entities import EntityExtractor
-except ImportError:
-    try:
-        from nlp.entities import EntityExtractor
-    except ImportError:
-        pass
+    exec(config_code, _config_ns)
+    ENTITY_LABELS = _config_ns.get("ENTITY_LABELS", ["SATELLITE", "SENSOR", "PRODUCT"])
+    RELATION_TYPES = _config_ns.get(
+        "RELATION_TYPES", ["PROVIDES", "USES", "LOCATED_AT", "MEASURES"]
+    )
+    GLiNER_MODEL = _config_ns.get("GLiNER_MODEL", "urchade/gliner_medium-v2.1")
+    SPACY_MODEL = _config_ns.get("SPACY_MODEL", "en_core_web_sm")
+except Exception:
+    ENTITY_LABELS = ["SATELLITE", "SENSOR", "PRODUCT"]
+    RELATION_TYPES = ["PROVIDES", "USES", "LOCATED_AT", "MEASURES"]
+    GLiNER_MODEL = "urchade/gliner_medium-v2.1"
+    SPACY_MODEL = "en_core_web_sm"
+
+# EntityExtractor - lazy load with try/except
+EntityExtractor = None
+
+
+def _get_entity_extractor():
+    """Get EntityExtractor class with lazy loading."""
+    global EntityExtractor
+    if EntityExtractor is None:
+        try:
+            # Direct file import to avoid __init__.py triggering
+            import importlib.util
+
+            spec = importlib.util.spec_from_file_location(
+                "entities", "src/nlp/entities.py"
+            )
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            EntityExtractor = module.EntityExtractor
+        except Exception:
+            pass
+    return EntityExtractor
 
 
 class MOSDACNLPModule:

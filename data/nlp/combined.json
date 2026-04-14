@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "files_processed": 2,
+    "total_entities": 8,
+    "total_relations": 0,
+    "source_files": [
+      "documents.json",
+      "faqs.json",
+      "products.json",
+      "satellites.json",
+      "sensors.json"
+    ]
+  },
+  "entities": [
+    {
+      "text": "TERLS",
+      "label": "PRODUCT",
+      "start": 14,
+      "end": 19,
+      "normalized": null,
+      "source_file": "products.json",
+      "confidence": 0.9
+    },
+    {
+      "text": "DWRproduct",
+      "label": "PRODUCT",
+      "start": 20,
+      "end": 30,
+      "normalized": null,
+      "source_file": "products.json",
+      "confidence": 0.9
+    },
+    {
+      "text": "Cal-Val",
+      "label": "PRODUCT",
+      "start": 0,
+      "end": 7,
+      "normalized": null,
+      "source_file": "products.json",
+      "confidence": 0.9
+    },
+    {
+      "text": "INSAT-3DR",
+      "label": "SATELLITE",
+      "start": 0,
+      "end": 9,
+      "normalized": "INSAT-3DR",
+      "source_file": "satellites.json",
+      "confidence": 0.9
+    },
+    {
+      "text": "INSAT-3D",
+      "label": "SATELLITE",
+      "start": 0,
+      "end": 8,
+      "normalized": "INSAT-3D",
+      "source_file": "satellites.json",
+      "confidence": 0.9
+    },
+    {
+      "text": "INSAT-3A",
+      "label": "SATELLITE",
+      "start": 0,
+      "end": 8,
+      "normalized": "INSAT-3A",
+      "source_file": "satellites.json",
+      "confidence": 0.9
+    },
+    {
+      "text": "INSAT-3DS",
+      "label": "SATELLITE",
+      "start": 0,
+      "end": 9,
+      "normalized": "INSAT-3DS",
+      "source_file": "satellites.json",
+      "confidence": 0.9
+    },
+    {
+      "text": "Satellite",
+      "label": "SATELLITE",
+      "start": 0,
+      "end": 9,
+      "normalized": null,
+      "source_file": "satellites.json",
+      "confidence": 0.9
+    }
+  ],
+  "relations": []
+}
