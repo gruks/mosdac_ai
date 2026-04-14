@@ -2,8 +2,8 @@
 
 ## Current Position
 
-Phase: 5 of 7 (Fine-tune Model)
-Status: Complete
+Phase: 6 of 7 (GraphRAG Pipeline)
+Status: Ready
 
 ## Progress
 
